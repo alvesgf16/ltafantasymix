@@ -30,8 +30,18 @@ def apply_filters():
     refresh_button.click()
 
 
+def filter_players_by_roles():
+    number_of_role_links = len(
+        driver.find_elements(By.CSS_SELECTOR, "#roleBox a")
+    )
+    for i in range(1, number_of_role_links):
+        role_link = driver.find_elements(By.CSS_SELECTOR, "#roleBox a")[i]
+        role_link.click()
+
+
 try:
     filter_leagues_for_lta_regions()
+    filter_players_by_roles()
 
 finally:
     driver.quit()
